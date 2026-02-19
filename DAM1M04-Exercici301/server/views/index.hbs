@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/estils.css">
+    <title>{{title}}</title>
+</head>
+<body>
+    {{> header}}
+    <h2>{{subtitle}}</h2>
+    <p>{{notice}}</p>
+
+    {{#if showWarning}}
+        <div class="warning">⚠️ Avís: Aquesta informació és preliminar.</div>
+    {{/if}}
+</body>
+</html>

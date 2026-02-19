@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/estils.css">
+    <title>Informe</title>
+</head>
+<body>
+    {{> header}}
+    <table>
+        <thead>
+            <tr>
+                <th>Ciutat</th>
+                <th>País</th>
+                <th>Població</th>
+                <th>Tipus</th>
+                <th>Mida</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each cities}}
+            <tr>
+                <td>**{{name}}**</td>
+                <td>{{lookup ../countryNames country}}</td>
+                <td>{{#if population}}{{population}}{{else}}Desconeguda{{/if}}</td>
+                <td>
+                    {{#if coastal}} 🌊 Costanera {{else}} Interior {{/if}}
+                </td>
+                <td>
+                    {{#if (lte population 800000)}}
+                        <span class="badge small">Petita</span>
+                    {{else}}
+                        <span class="badge large">Gran</span>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
