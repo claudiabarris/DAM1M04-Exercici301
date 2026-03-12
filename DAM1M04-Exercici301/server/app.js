@@ -7,13 +7,13 @@ const app = express();
 
 // Configuración de Handlebars y Partials
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views')); //decir donde estan las caretas
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
-// Servir archivos estáticos
+// leer capetra public para poder leer datos estaticos como el css.
 app.use(express.static(path.join(__dirname, '../public')));
 
-// --- HELPER PERSONALIZADO ---
+// se crea la funcion de mayor o menor pero se debe configurar para que la sepa interpretar
 hbs.registerHelper('lte', function (a, b) {
     return a <= b;
 });
@@ -21,7 +21,6 @@ hbs.registerHelper('lte', function (a, b) {
 // Función para leer JSON de forma sencilla
 const getData = (file) => JSON.parse(fs.readFileSync(path.join(__dirname, 'data', file), 'utf-8'));
 
-// --- RUTAS ---
 
 // A) Página Principal
 app.get('/', (req, res) => {
@@ -38,7 +37,7 @@ app.get('/informe', (req, res) => {
     res.render('informe', {
         title: site.title,
         cities: cities.cities,
-        countryNames: countries.countries // Pasamos el diccionario para el lookup
+        countryNames: countries.countries // Pasamos el diccionario 
     });
 });
 
